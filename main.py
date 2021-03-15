@@ -34,10 +34,14 @@ while True:
     
         bot.update_subscribers()
     
-        immoscout = LinkManager(page_url_immoscout, prefix_url_immoscout, {"class": "result-list-entry__brand-title-container"})
-        immonet = LinkManager(page_url_immonet, prefix_url_immonet, {"class": "block ellipsis text-225 text-default"})
+        # collect LMs somehow
+        immoscout_LM = LinkManager(page_url_immoscout, prefix_url_immoscout, {"class": "result-list-entry__brand-title-container"})
+        immonet_LM = LinkManager(page_url_immonet, prefix_url_immonet, {"class": "block ellipsis text-225 text-default"})
     
-        app_urls = immoscout.links + immonet.links
+        # TODO Every now and then call persist changes
+        # TODO Every now and then compress changes
+
+        app_urls = immoscout_LM.links + immonet_LM.links
         flatten(app_urls)
     
         for link in app_urls:
